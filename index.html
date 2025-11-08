@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNIVAG • Eventos – Calendário + Solicitações</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <header class="appbar">
+        <div>
+            <strong>UNIVAG • Eventos</strong>
+            <span class="muted">Calendário centralizado + Lista de solicitações</span>
+        </div>
+        <div class="legend">
+            <span class="dot ok"></span>Aprovado
+            <span class="dot warn"></span>Em análise
+            <span class="dot err"></span>Recusado
+        </div>
+    </header>
+
+    <main class="workspace">
+        <!-- MAIN: calendário -->
+        <section class="panel panel--calendar">
+            <header class="panel__head">
+                <h1>Novembro 2025</h1>
+                <p class="muted">O calendário reflete o status da lista ao lado.</p>
+            </header>
+
+            <div class="calendar">
+                <div class="dow">Dom</div>
+                <div class="dow">Seg</div>
+                <div class="dow">Ter</div>
+                <div class="dow">Qua</div>
+                <div class="dow">Qui</div>
+                <div class="dow">Sex</div>
+                <div class="dow">Sáb</div>
+
+                <div class="day muted"></div>
+                <div class="day muted"></div>
+                <div class="day muted"></div>
+                <div class="day muted"></div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day" id="d14">14
+                    <span class="event ghost" data-status="analise">Palestra LGPD (19:00)</span>
+                </div>
+                <div class="day" id="d15">15
+                    <span class="event ok" data-status="aprovado">Aula Inaugural (09:00)</span>
+                </div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day" id="d22">22
+                    <span class="event err" data-status="recusado">Arte extra campanha</span>
+                </div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day" id="d27">27
+                    <span class="event ok" data-status="aprovado">Colação de Grau (19:30)</span>
+                </div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day muted"></div>
+            </div>
+        </section>
+
+        <!-- ASIDE: lista de solicitações -->
+        <aside class="panel panel--aside">
+            <header class="panel__head">
+                <h2>Solicitações</h2>
+                <p class="muted">Clique para destacar no calendário (protótipo estático).</p>
+            </header>
+
+            <ul class="req-list">
+                <li class="req" data-status="analise">
+                    <div class="req__main">
+                        <span class="badge warn">Em análise</span>
+                        <strong>Palestra LGPD</strong>
+                        <span class="muted">Cerimonial • 14/11/2025 • Auditório B</span>
+                    </div>
+                    <a class="req__jump" href="#d14" title="Ir para o dia">Ir</a>
+                </li>
+
+                <li class="req" data-status="aprovado">
+                    <div class="req__main">
+                        <span class="badge ok">Aprovado</span>
+                        <strong>Aula Inaugural</strong>
+                        <span class="muted">Cerimonial • 15/11/2025 • Auditório A</span>
+                    </div>
+                    <a class="req__jump" href="#d15">Ir</a>
+                </li>
+
+                <li class="req" data-status="recusado">
+                    <div class="req__main">
+                        <span class="badge err">Recusado</span>
+                        <strong>Arte extra campanha</strong>
+                        <span class="muted">Marketing • 22/11/2025</span>
+                    </div>
+                    <a class="req__jump" href="#d22">Ir</a>
+                </li>
+
+                <li class="req" data-status="aprovado">
+                    <div class="req__main">
+                        <span class="badge ok">Aprovado</span>
+                        <strong>Colação de Grau</strong>
+                        <span class="muted">Pró-Reitoria • 27/11/2025 • Ginásio</span>
+                    </div>
+                    <a class="req__jump" href="#d27">Ir</a>
+                </li>
+            </ul>
+
+            <footer class="panel__foot aside__footer">
+                <a href="#modal-request" class="btn primary">Solicitar</a>
+            </footer>
+        </aside>
+    </main>
+
+    <!-- MODAL (CSS-only, via :target) -->
+    <div id="modal-request" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <a class="modal__bg" href="#"></a>
+        <div class="modal__card">
+            <header class="modal__head">
+                <h3 id="modal-title">Nova Solicitação</h3>
+                <a class="modal__close" href="#" aria-label="Fechar">×</a>
+            </header>
+
+            <form class="form" action="#" method="post">
+                <div class="grid">
+                    <label>Setor solicitante
+                        <select required>
+                            <option value="">Selecione…</option>
+                            <option>Coordenação de Curso</option>
+                            <option>Cerimonial</option>
+                            <option>Marketing</option>
+                            <option>Audiovisual</option>
+                            <option>Pró-Reitoria</option>
+                        </select>
+                    </label>
+
+                    <label>Título do evento
+                        <input type="text" placeholder="Ex.: Semana Acadêmica" required />
+                    </label>
+
+                    <label>Data
+                        <input type="date" required />
+                    </label>
+
+                    <label>Horário
+                        <input type="time" required />
+                    </label>
+
+                    <label>Local / Sala
+                        <input type="text" placeholder="Auditório A / Sala 204" />
+                    </label>
+
+                    <label>Urgência
+                        <select>
+                            <option>Normal</option>
+                            <option>Alta</option>
+                            <option>Crítica</option>
+                        </select>
+                    </label>
+
+                    <fieldset class="full">
+                        <legend>Recursos necessários</legend>
+                        <label class="chk"><input type="checkbox" /> Projetor</label>
+                        <label class="chk"><input type="checkbox" /> Sonorização</label>
+                        <label class="chk"><input type="checkbox" /> Microfone</label>
+                        <label class="chk"><input type="checkbox" /> Fotografia</label>
+                        <label class="chk"><input type="checkbox" /> Arte/Peças (Marketing)</label>
+                    </fieldset>
+
+                    <label class="full">Briefing / Descrição
+                        <textarea rows="4" placeholder="Contexto, público, objetivo, prazos…"></textarea>
+                    </label>
+                </div>
+
+                <div class="form__actions">
+                    <button type="submit" class="btn primary">Enviar</button>
+                    <a href="#" class="btn ghost">Cancelar</a>
+                </div>
+
+                <p class="note">Protótipo estático: envio não persiste. No produto, criará a solicitação com status
+                    <strong>Em análise</strong>.
+                </p>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
